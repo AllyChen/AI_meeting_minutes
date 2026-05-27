@@ -15,8 +15,8 @@ export default function MeetingOutput({ processedText, isLoading, activeLoadingS
   const loadingSteps = [
     "AI 秘書已收到逐字稿，開始語意斷句分析...",
     "正在過濾口頭禪、廢話，梳理會議主幹議題與關鍵對策...",
-    "正在精確提取各部門的行動項目（Action Items）與指派窗口...",
-    "進行中，AI 專家正在執行精確的商務語境多語系翻譯...",
+    "正在精確提取各部門的行動項目與責任歸屬...",
+    "進行中，AI 專家正在整理成條理清晰的會議摘要...",
     "排版收尾中，準備為您呈現最精美的結構化會議文檔..."
   ];
 
@@ -34,7 +34,7 @@ export default function MeetingOutput({ processedText, isLoading, activeLoadingS
     const link = document.createElement("a");
     const today = new Date().toISOString().split("T")[0];
     link.href = url;
-    link.setAttribute("download", `會議記錄與翻譯_${today}.md`);
+    link.setAttribute("download", `會議記錄_${today}.md`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -90,7 +90,7 @@ export default function MeetingOutput({ processedText, isLoading, activeLoadingS
         </div>
         <h3 className="text-sm font-bold text-[#2C2C24] mb-1">等待生成會議記錄</h3>
         <p className="text-xs text-[#8A8A7A] max-w-xs leading-relaxed">
-          請在左側貼上您的會議文字或載入提供的精美範本，點擊「生成總結與翻譯」按鈕，AI 助手將會在幾秒鐘內為您產出專業的會議結晶。
+          請在左側貼上您的會議文字，點擊「開始生成會議總結」按鈕，AI 將會快速整理出精準的會議記錄。
         </p>
       </div>
     );
@@ -102,7 +102,7 @@ export default function MeetingOutput({ processedText, isLoading, activeLoadingS
       <div className="px-6 py-4 bg-[#FDFBF7] border-b border-[#E5E5DF] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <BookOpen className="w-4 h-4 text-[#5A5A40]" />
-          <h2 className="text-sm font-bold text-[#2C2C24]">AI 整理與翻譯報告</h2>
+          <h2 className="text-sm font-bold text-[#2C2C24]">AI 整理會議報告</h2>
           <span className="text-[10px] bg-[#EFEFEA] text-[#5A5A40] px-2 py-0.5 rounded-full font-bold border border-[#DEDECF]">生成成功</span>
         </div>
 

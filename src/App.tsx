@@ -70,9 +70,7 @@ export default function App() {
         },
         body: JSON.stringify({
           transcript: config.transcript,
-          targetLanguage: config.targetLanguage,
-          tone: config.tone,
-          sections: config.sections
+          customInstruction: config.customInstruction
         })
       });
 
@@ -103,10 +101,7 @@ export default function App() {
         title: generatedTitle,
         date: formatDate,
         rawText: config.transcript,
-        processedText: data.result,
-        tone: config.tone,
-        targetLanguage: config.targetLanguage,
-        sections: config.sections
+        processedText: data.result
       };
 
       const updatedRecords = [newRecord, ...records];
@@ -148,7 +143,7 @@ export default function App() {
                 <span>智議 AI 助手</span>
               </div>
               <p className="text-[10px] md:text-xs text-[#8A8A7A] uppercase tracking-wider font-semibold hidden sm:block">
-                Meeting Intelligence & Translation
+                Meeting Summary Generator
               </p>
             </div>
           </div>
@@ -162,15 +157,6 @@ export default function App() {
               <HelpCircle className="w-3.5 h-3.5" />
               <span>使用指南與小技巧</span>
             </button>
-            <a
-              href="https://ai.studio/build"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[11px] font-semibold text-[#5A5A40] bg-[#EFEFEA] hover:bg-[#DEDECF]/50 px-3.5 py-2 rounded-xl transition-all hidden md:flex items-center gap-1 border border-[#DEDECF]"
-            >
-              <span>Google AI Studio</span>
-              <ArrowUpRight className="w-3 h-3" />
-            </a>
           </div>
         </div>
       </header>
@@ -185,7 +171,7 @@ export default function App() {
               <div>
                 <p className="font-bold mb-0.5">無法呼叫 AI 模型做分析整理</p>
                 <p className="opacity-90">{errorText}</p>
-                <p className="mt-1.5 text-[11px] text-red-600">※ 解決方案：請確認您在 AI Studio 的 <strong>Settings &gt; Secrets</strong> 面板中，已成功綁定名稱為 <code>GEMINI_API_KEY</code> 的金鑰環境變數，且已重啟開發伺服器。</p>
+                <p className="mt-1.5 text-[11px] text-red-600">※ 解決方案：請確認您已在部署環境或本機建立 `GEMINI_API_KEY` 環境變數，並重新啟動應用程式。</p>
               </div>
             </div>
             <button
@@ -219,13 +205,13 @@ export default function App() {
                     <strong>發言角色標記</strong>：在逐字稿中附帶發言人稱呼，如：<code className="bg-black/10 text-white px-1.5 py-0.5 rounded">主席 Betty：我們先討論...</code>，這能幫助 AI 追蹤並精確指派行動代辦人。
                   </li>
                   <li>
-                    <strong>風格因地制宜</strong>：對於決策匯報，使用<strong className="text-white">【精簡執行摘要】</strong>；若需完整還原討論過程與爭執點，建議選用<strong className="text-white">【詳盡全備大師】</strong>。
+                    <strong>善用結構化標題</strong>：將會議要點分段，如「決策」、「風險」、「行動項目」，可讓 AI 更快聚焦重點。
                   </li>
                   <li>
-                    <strong>善用客製化指令</strong>：在下方備註欄輸入「要求產出預算明細對照表格」或「加註待確認事項的主責部門」，AI 秘書將能百分百配合您的合規排版。
+                    <strong>善用客製化指令</strong>：在下方備註欄輸入「要求產出預算明細對照表格」或「加註待確認事項的主責部門」，AI 秘書將能更精準地符合你的需求。
                   </li>
                   <li>
-                    <strong>專業雙向翻譯</strong>：對照翻譯區塊包含具備跨國集團商務高度的專用單字與行話，能直接用於跨國主管日常工作簡報。
+                    <strong>清楚標記參與者</strong>：在逐字稿中包含發言人，例如「Leo：」、「Anna：」，可幫助 AI 精準提取責任歸屬與行動項目。
                   </li>
                 </ol>
               </div>

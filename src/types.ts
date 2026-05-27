@@ -4,16 +4,11 @@ export interface MeetingRecord {
   date: string;
   rawText: string;
   processedText: string;
-  tone: string;
-  targetLanguage: string;
-  sections: string[];
 }
 
 export interface GenerationConfig {
   transcript: string;
-  targetLanguage: string;
-  tone: string;
-  sections: string[];
+  customInstruction?: string;
 }
 
 export interface SampleTranscript {

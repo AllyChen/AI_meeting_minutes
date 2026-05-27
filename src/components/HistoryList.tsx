@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MeetingRecord } from "../types";
-import { History, Calendar, Trash2, Search, ArrowRight, Languages, AlertCircle } from "lucide-react";
+import { History, Calendar, Trash2, Search, ArrowRight, AlertCircle } from "lucide-react";
 
 interface HistoryListProps {
   records: MeetingRecord[];
@@ -98,11 +98,6 @@ export default function HistoryList({
                   <span className="flex items-center gap-0.5">
                     <Calendar className="w-2.5 h-2.5" />
                     {r.date}
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-0.5 bg-[#F5F5F0] px-1.5 py-0.5 rounded text-[#5A5A40] font-bold">
-                    <Languages className="w-2.5 h-2.5" />
-                    {r.targetLanguage}
                   </span>
                 </div>
               </div>
